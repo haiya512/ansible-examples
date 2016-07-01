@@ -1,0 +1,12 @@
+- hosts: 10.0.1.88
+  gather_facts: yes
+  vars:
+     http_proxy: http://10.0.1.10:3280
+     https_proxy: http://10.0.1.10:3280
+     ftp_proxy: http://10.0.1.10:3280
+  tasks:
+     - name: panduan
+       debug: msg="when is true"
+       when: "'10.0.1' in {{ ansible_all_ipv4_addresses }}[0]"
+     - name: ip addr
+       debug: msg="{{ ansible_all_ipv4_addresses }}[0]"
